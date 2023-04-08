@@ -18,7 +18,7 @@ export default function Pancake({
 
   return (
     <div className="w-full bg-blue-50 rounded-2xl p-5 lg:p-8 drop-shadow gap-2 flex flex-col">
-      <div className="flex justify-between items-center ">
+      <div className="flex justify-between items-center  ">
         <h4 className=" text-xl overflow-clip">{name}</h4>
         <Button
           title="Delete"

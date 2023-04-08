@@ -7,7 +7,7 @@ import Button from "../components/Button";
 import { useQuery } from "react-query";
 import server from "../utils/server";
 import { INGREDIENT_TYPES } from "../utils/constants";
-import { useEffect } from "react";
+import IngredientGrid from "../components/CreatePancakes/IngredientGrid";
 
 export default function CreatePancake() {
   const { orderNumber } = useParams();
@@ -98,8 +98,8 @@ export default function CreatePancake() {
     name && noBaseIngredientsSelected == 1 && noStuffingIngredientsSelected > 0;
 
   return (
-    <Page className=" flex gap-12 flex-1  flex-col w-full max-w-4xl  2xl:max-w-7xl px-6 py-12 md:py-16">
-      <div className="flex flex-col gap-4">
+    <Page className="  sm:px-12 flex gap-12 flex-1  flex-col w-full max-w-4xl  2xl:max-w-7xl px-6 py-12 md:py-16">
+      <div className="flex flex-col  gap-4">
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -115,57 +115,34 @@ export default function CreatePancake() {
       </div>
       <div className="flex gap-6 flex-col">
         <h3 className="font-extralight">All Ingredients</h3>
-        <div className="grid gap-4 grid-cols-1">
+        <div className="flex flex-col gap-5">
           <h2 className="text-sm">Base</h2>
-          {baseIngredients.map((ingredient, i) => {
-            return (
-              <Ingredient
-                onSelect={() => toggleIngredient(ingredient.id)}
-                selectable={true}
-                {...ingredient}
-                key={i}
-              />
-            );
-          })}
+          <IngredientGrid
+            ingredients={baseIngredients}
+            toggleIngredient={toggleIngredient}
+          />
         </div>
-        <div className="grid gap-5 grid-cols-1">
+        <div className="flex flex-col gap-5">
           <h2 className="text-sm">Stuffing</h2>
-          {stuffingIngredients.map((ingredient, i) => {
-            return (
-              <Ingredient
-                onSelect={() => toggleIngredient(ingredient.id)}
-                selectable={true}
-                {...ingredient}
-                key={i}
-              />
-            );
-          })}
+          <IngredientGrid
+            ingredients={stuffingIngredients}
+            toggleIngredient={toggleIngredient}
+          />
         </div>
-        <div className="grid gap-5 grid-cols-1">
+        <div className="flex flex-col gap-5">
           <h2 className="text-sm">Topping</h2>
-          {toppingIngredients.map((ingredient, i) => {
-            return (
-              <Ingredient
-                onSelect={() => toggleIngredient(ingredient.id)}
-                selectable={true}
-                {...ingredient}
-                key={i}
-              />
-            );
-          })}
+          <IngredientGrid
+            ingredients={toppingIngredients}
+            toggleIngredient={toggleIngredient}
+          />
         </div>
-        <div className="grid gap-5 grid-cols-1">
+        <div className="flex flex-col gap-5">
           <h2 className="text-sm">Fruit</h2>
-          {fruitIngredients.map((ingredient, i) => {
-            return (
-              <Ingredient
-                onSelect={() => toggleIngredient(ingredient.id)}
-                selectable={true}
-                {...ingredient}
-                key={i}
-              />
-            );
-          })}
+
+          <IngredientGrid
+            ingredients={fruitIngredients}
+            toggleIngredient={toggleIngredient}
+          />
         </div>
       </div>
       <div className="flex-1"></div>
