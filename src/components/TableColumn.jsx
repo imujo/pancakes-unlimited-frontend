@@ -1,8 +1,11 @@
 import React from "react";
 import { formatDate } from "../utils/functions";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 export default function TableColumn({ order, i }) {
+  const navigate = useNavigate();
+
   let formatedDate = formatDate(new Date(order.createdAt));
 
   return (
@@ -21,7 +24,11 @@ export default function TableColumn({ order, i }) {
         {order.description}
       </div>
       <div className={`col-start-4 row-start-${i + 2}`}>
-        <Button title="Details" />
+        <Button
+          title="Details"
+          className="w-auto "
+          onClick={() => navigate(`/order/${order.orderNumber}`)}
+        />
       </div>
     </>
   );

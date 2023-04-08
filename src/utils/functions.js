@@ -1,6 +1,10 @@
 const formatDateItem = (number, length) => {
+  if (isNaN(number)) {
+    return "Nan";
+  }
   let str = number.toString();
   if (str.length > length) {
+    console.log(str);
     throw new Error(
       "Lenght is larger than number length in function formatDateItem"
     );

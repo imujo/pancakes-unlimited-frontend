@@ -91,7 +91,12 @@ export default function LoginPage() {
 
         <div className=" flex-1 py-4 " />
 
-        <Button title="Log in" type="submit" loading={loading} />
+        <Button
+          title="Log in"
+          type="submit"
+          loading={loading}
+          className={"w-full"}
+        />
       </form>
     </main>
   );
