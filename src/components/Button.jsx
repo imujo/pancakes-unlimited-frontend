@@ -12,7 +12,7 @@ export default function Button({
     <button
       {...rest}
       className={` bg-blue-600 px-4 py-2 flex justify-center rounded-lg text-white font-semibold self-end ${className} 
-      ${disabled && " bg-blue-400"}
+      ${disabled && " bg-blue-300"}
       `}
       disabled={loading || disabled}
     >

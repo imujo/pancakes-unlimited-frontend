@@ -21,23 +21,26 @@ export default function OrdersTable() {
   if (!!Object.keys(error).length) return <div>Error</div>;
 
   return (
-    <div className=" w-full grid grid-rows-4 gap-y-5 gap-x-10  ">
-      <div className="col-start-1  row-start-1 text-xs lg:text-sm text-start">
-        ORDER NUMBER
-      </div>
-      <div className=" col-start-2  row-start-1 text-xs lg:text-sm text-start ">
-        DATE CREATED
-      </div>
-      <div className=" col-start-3 row-start-1  text-xs lg:text-sm text-start ">
-        DESCRIPTION
-      </div>
-      <div className=" col-start-4 row-start-1  w-4 "></div>
+    <div className="w-full overflow-x-scroll">
+      <div className="  grid grid-rows-4 gap-y-5 gap-x-10    ">
+        <div className="col-start-1  row-start-1 text-xs lg:text-sm text-start">
+          ORDER NUMBER
+        </div>
+        <div className=" col-start-2  row-start-1 text-xs lg:text-sm text-start ">
+          DATE CREATED
+        </div>
+        <div className=" col-start-3 row-start-1  text-xs lg:text-sm text-start ">
+          DESCRIPTION
+        </div>
+        <div className=" col-start-4 row-start-1  w-4 "></div>
 
-      {orders.map((order, i) => (
-        <TableColumn key={i} order={order} i={i} />
-      ))}
+        {orders.map((order, i) => (
+          <TableColumn key={i} order={order} i={i} />
+        ))}
 
-      {loading && <p>Loading...</p>}
+        {loading && <p>Loading...</p>}
+        {/* <div style={{ width: "800px" }} className="bg-red-200 h-40"></div> */}
+      </div>
     </div>
   );
 }

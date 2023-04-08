@@ -10,14 +10,22 @@ export default function TableColumn({ order, i }) {
 
   return (
     <>
-      <div className={`text-base lg:text-xl col-start-1 row-start-${i + 2}`}>
+      <div
+        className={`text-base font-light lg:text-xl col-start-1 row-start-${
+          i + 2
+        }`}
+      >
         {order.orderNumber}
       </div>
-      <div className={`text-base lg:text-xl col-start-2 row-start-${i + 2}`}>
+      <div
+        className={`text-base font-extralight lg:text-xl col-start-2 row-start-${
+          i + 2
+        }`}
+      >
         {formatedDate}
       </div>
       <div
-        className={`text-base lg:text-xl col-start-3 max-w-50 row-start-${
+        className={`text-base font-extralight lg:text-xl col-start-3 max-w-50 row-start-${
           i + 2
         }`}
       >
@@ -26,7 +34,6 @@ export default function TableColumn({ order, i }) {
       <div className={`col-start-4 row-start-${i + 2}`}>
         <Button
           title="Details"
-          className="w-auto "
           onClick={() => navigate(`/order/${order.orderNumber}`)}
         />
       </div>
