@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Page from "../components/Page";
-import Input from "../components/Input";
-import Ingredient from "../components/Ingredient";
 import Button from "../components/Button";
 import { useQuery } from "react-query";
 import server from "../utils/server";
@@ -30,16 +28,16 @@ export default function CreatePancake() {
   if (isLoading) return <p>Loading...</p>;
 
   const baseIngredients = ingredients.filter(
-    (ingredient) => ingredient.type.id == INGREDIENT_TYPES.BAZA
+    (ingredient) => ingredient.type.id === INGREDIENT_TYPES.BAZA
   );
   const stuffingIngredients = ingredients.filter(
-    (ingredient) => ingredient.type.id == INGREDIENT_TYPES.NADJEV
+    (ingredient) => ingredient.type.id === INGREDIENT_TYPES.NADJEV
   );
   const toppingIngredients = ingredients.filter(
-    (ingredient) => ingredient.type.id == INGREDIENT_TYPES.PRELJEV
+    (ingredient) => ingredient.type.id === INGREDIENT_TYPES.PRELJEV
   );
   const fruitIngredients = ingredients.filter(
-    (ingredient) => ingredient.type.id == INGREDIENT_TYPES.VOCE
+    (ingredient) => ingredient.type.id === INGREDIENT_TYPES.VOCE
   );
 
   const addPancake = async (orderNumber, name, ingredientIds) => {
@@ -62,7 +60,7 @@ export default function CreatePancake() {
   const toggleIngredient = (id) => {
     setSelectedIngredientIds((prev) => {
       if (prev.includes(id)) {
-        return prev.filter((arrId) => arrId != id);
+        return prev.filter((arrId) => arrId !== id);
       } else {
         return [...prev, id];
       }
@@ -95,7 +93,9 @@ export default function CreatePancake() {
     ).length;
 
   const submitEnabled =
-    name && noBaseIngredientsSelected == 1 && noStuffingIngredientsSelected > 0;
+    name &&
+    noBaseIngredientsSelected === 1 &&
+    noStuffingIngredientsSelected > 0;
 
   return (
     <Page className="  sm:px-12 flex gap-12 flex-1  flex-col w-full max-w-4xl  2xl:max-w-7xl px-6 py-12 md:py-16">

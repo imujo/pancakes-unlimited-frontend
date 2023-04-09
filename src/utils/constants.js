@@ -9,4 +9,9 @@ const INGREDIENT_TYPES = {
   VOCE: 4,
 };
 
-export { APP_ROUTES, INGREDIENT_TYPES };
+const BUTTON_TYPES = {
+  FILL: 1,
+  OUTLINE: 2,
+};
+
+export { APP_ROUTES, INGREDIENT_TYPES, BUTTON_TYPES };

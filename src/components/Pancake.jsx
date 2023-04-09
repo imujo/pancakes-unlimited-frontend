@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Ingredient from "./Ingredient";
 import server from "../utils/server";
+import { BUTTON_TYPES } from "../utils/constants";
 
 export default function Pancake({
   name,
@@ -22,6 +23,8 @@ export default function Pancake({
         <h4 className=" text-xl overflow-clip">{name}</h4>
         <Button
           title="Delete"
+          buttonType={BUTTON_TYPES.OUTLINE}
+          color="red"
           className="w-auto text-xs py-2 px-3"
           disabled={!deleteEnabled}
           onClick={() => deletePancake(id)}

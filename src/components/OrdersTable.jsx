@@ -1,24 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import server from "../utils/server";
-import Button from "./Button";
-import { formatDate } from "../utils/functions";
 import TableColumn from "./TableColumn";
+import { useQuery } from "react-query";
+import { TailSpin } from "react-loader-spinner";
 
 export default function OrdersTable() {
-  const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
+  const {
+    data: orders,
+    error,
+    isLoading,
+  } = useQuery("orders", () => {
+    return server.get("order/all").then((res) => res.data);
+  });
 
-  useEffect(() => {
-    setLoading(true);
-    server
-      .get("order/all")
-      .then((res) => setOrders(res.data))
-      .catch(setError)
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (!!Object.keys(error).length) return <div>Error</div>;
+  if (error) return <p>Oops, there is an error</p>;
+  if (isLoading) {
+    return (
+      <div className="flex h-full w-full justify-center items-center">
+        <TailSpin
+          height={48}
+          width={48}
+          color="black"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full overflow-x-scroll">
@@ -34,12 +45,10 @@ export default function OrdersTable() {
         </div>
         <div className=" col-start-4 row-start-1  w-4 "></div>
 
-        {orders.map((order, i) => (
-          <TableColumn key={i} order={order} i={i} />
-        ))}
+        {!isLoading &&
+          orders.map((order, i) => <TableColumn key={i} order={order} i={i} />)}
 
-        {loading && <p>Loading...</p>}
-        {/* <div style={{ width: "800px" }} className="bg-red-200 h-40"></div> */}
+        {orders.length === 0 ? <p>No orders found</p> : null}
       </div>
     </div>
   );

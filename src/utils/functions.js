@@ -18,7 +18,7 @@ const formatDateItem = (number, length) => {
 };
 
 export function formatDate(date) {
-  if (date instanceof Date == false) {
+  if (date instanceof Date === false) {
     throw new Error(
       "Invalid argument passed in function format date. The function requires a Date type."
     );

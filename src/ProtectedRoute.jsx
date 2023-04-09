@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { APP_ROUTES } from "./utils/constants";
-import server from "./utils/server";
+import React from "react";
+// import { APP_ROUTES } from "./utils/constants";
+// import server from "./utils/server";
 import { Navigate, Outlet } from "react-router-dom";
 
 export default function ProtectedRoute() {
+  // CAN BE USED FOR AUTHENTICATING JWT TOKEN ON EVERY REQUEST
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
   // const [loading, setLoading] = useState(true);
 
@@ -17,7 +18,7 @@ export default function ProtectedRoute() {
   //     .get(APP_ROUTES.IS_AUTHENTICATED)
   //     .then((res) => {
   //       console.log("works");
-  //       if (res.status == 200) {
+  //       if (res.status === 200) {
   //         setIsAuthenticated(true);
   //       }
   //     })

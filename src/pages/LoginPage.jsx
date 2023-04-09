@@ -30,7 +30,7 @@ export default function LoginPage() {
         return navigate("/asd");
       })
       .catch((err) => {
-        if (err.response.status == 403) {
+        if (err.response.status === 403) {
           setErrors({
             username: {
               msg: "Username or password is incorrect",

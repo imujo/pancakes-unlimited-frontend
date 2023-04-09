@@ -2,6 +2,7 @@ import React from "react";
 import { formatDate } from "../utils/functions";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import { BUTTON_TYPES } from "../utils/constants";
 
 export default function TableColumn({ order, i }) {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ export default function TableColumn({ order, i }) {
       <div className={`col-start-4 row-start-${i + 2}`}>
         <Button
           title="Details"
+          buttonType={BUTTON_TYPES.OUTLINE}
           onClick={() => navigate(`/order/${order.orderNumber}`)}
         />
       </div>
